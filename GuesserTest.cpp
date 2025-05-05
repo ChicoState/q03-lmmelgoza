@@ -40,20 +40,20 @@ TEST(GuesserTest, LockedAfterThreeWrongDistanceGuesses) {
 }
 
 TEST(GuesserTest, ExactMatchDistanceIsZero) {
-  Guesser g("test");
-  ASSERT_TRUE(g.match("test"));
+  Guesser g("test123");
+  ASSERT_TRUE(g.match("test123"));
   ASSERT_EQ(g.remaining(), 3);
 }
 
 TEST(GuesserTest, Distance2GuessDecrementsRemaining) {
   Guesser g("abc");
-  ASSERT_FALSE(g.match("acc"));
-  ASSERT_FALSE(g.match("aax"));
+  ASSERT_FALSE(g.match("axc"));
+  ASSERT_FALSE(g.match("add"));
   ASSERT_EQ(g.remaining(), 1);
 }
 
 TEST(GuesserTest, Distance1GuessDecrementsRemaining) {
   Guesser g("abc");
-  ASSERT_FALSE(g.match("abd"));
+  ASSERT_FALSE(g.match("abz"));
   ASSERT_EQ(g.remaining(), 2);
 }
